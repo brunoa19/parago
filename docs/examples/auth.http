@@ -1,0 +1,32 @@
+#{
+#  "org": "Nbv",
+#  "user": "BOGDAN NIKOVSKYI",
+#  "userId": "62968b25a7d33b0001f55f55",
+#  "token": "c0ca14a54aa201e45dceae81bcf0c0e740"
+#}
+###
+POST http://localhost:8080/auth/login
+
+{
+    "login": "nbvteam@gmail.com",
+    "password": "NrgS_I[fW3(9"
+}
+
+###
+#{
+#  "org": "Nbv",
+#  "user": "BOGDAN NIKOVSKYI",
+#  "userId": "62968b25a7d33b0001f55f55",
+#  "token": "6306dc4fc5b634b31b565a878345aeec40"
+#}
+###
+GET http://localhost:8080/auth/user
+X-Auth-Token: 6306dc4fc5b634b31b565a878345aeec40
+
+###
+
+###
+POST http://localhost:8080/auth/logout
+X-Auth-Token: 6306dc4fc5b634b31b565a878345aeec40
+
+###

@@ -1,0 +1,15 @@
+### personal configs
+GET http://localhost:8080/config
+X-Auth-Token: b959b90ba5ef405adc45e28d869c166340
+
+### public configs
+GET http://localhost:8080/config/list/public?page=1&pageSize=5
+X-Auth-Token: ca891b02a9f858e85b6ad3d0ec27286a40
+
+### organisation configs
+GET http://localhost:8080/config/list/organization
+X-Auth-Token: b959b90ba5ef405adc45e28d869c166340
+
+### private configs
+GET http://localhost:8080/config/list/private
+X-Auth-Token: b959b90ba5ef405adc45e28d869c166340

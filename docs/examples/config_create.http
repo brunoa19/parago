@@ -1,0 +1,44 @@
+# Request to create new configuration
+
+POST http://localhost:8080/config
+X-Auth-Token: ca891b02a9f858e85b6ad3d0ec27286a40
+
+{
+    "name": "app2",
+    "accessLevel": "public",
+    "description": "2",
+    "data": {
+        "provider": "crossplane",
+        "apps": [
+            {
+                "appName": "app1",
+                "framework": "fr-2",
+                "team": "t1",
+                "image": "i1"
+            }
+        ]
+    },
+    "definition": {
+        "any-key": "any-data"
+    }
+}
+
+###
+#Response:
+#
+#{
+#  "id": "a9f07337-36b1-48df-801d-6e28fb671d2a",
+#  "name": "app2",
+#  "org": "testorg",
+#  "user": "testuser",
+#  "accessLevel": "public",
+#  "description": "2",
+#  "Deleted": false,
+#  "provider": "crossplane",
+#  "resourceType": "app",
+#  "userInfo": {
+#    "userId": "123",
+#    "userName": "testuser",
+#    "userOrg": "testorg"
+#  }
+#}

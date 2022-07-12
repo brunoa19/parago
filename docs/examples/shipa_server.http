@@ -1,0 +1,24 @@
+
+###
+GET http://localhost:8080/shipa-server/users
+X-Auth-Token: 6306dc4fc5b634b31b565a878345aeec40
+
+###
+GET http://localhost:8080/shipa-server/users/info
+X-Auth-Token: 6306dc4fc5b634b31b565a878345aeec40
+
+###
+GET http://localhost:8080/shipa-server/frameworks
+X-Auth-Token: 6306dc4fc5b634b31b565a878345aeec40
+
+###
+GET http://localhost:8080/shipa-server/volumes
+X-Auth-Token: 6306dc4fc5b634b31b565a878345aeec40
+
+###
+GET http://localhost:8080/shipa-server/teams
+X-Auth-Token: 6306dc4fc5b634b31b565a878345aeec40
+
+###
+GET http://localhost:8080/shipa-server/plans
+X-Auth-Token: 6306dc4fc5b634b31b565a878345aeec40

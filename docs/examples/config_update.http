@@ -1,0 +1,62 @@
+
+# Create new configuration
+POST http://localhost:8080/config
+X-Auth-Token: ca891b02a9f858e85b6ad3d0ec27286a40
+
+{
+    "name": "app2",
+    "accessLevel": "public",
+    "description": "2",
+    "data": {
+        "provider": "crossplane",
+        "apps": [
+            {
+                "appName": "app1",
+                "framework": "fr-2",
+                "team": "t1",
+                "image": "i1"
+            }
+        ]
+    },
+    "definition": {
+        "any-key": "any-data"
+    }
+}
+###
+#
+#{
+#  "id": "d8a7329c-3629-4f4b-9874-8136cb2e65b8",
+#  "name": "app2",
+#  "org": "testorg",
+#  "user": "testuser",
+#  "accessLevel": "public",
+#  "description": "2",
+#  "Deleted": false,
+#  "provider": "crossplane",
+#  "resourceType": "app"
+#}
+###
+
+# Update created configuration
+POST http://localhost:8080/config/d8a7329c-3629-4f4b-9874-8136cb2e65b8
+X-Auth-Token: ca891b02a9f858e85b6ad3d0ec27286a40
+
+{
+    "accessLevel": "public",
+    "description": "2 updated 2",
+    "data": {
+        "provider": "crossplane",
+        "apps": [
+            {
+                "appName": "app1",
+                "framework": "fr-2",
+                "team": "t1",
+                "image": "i1"
+            }
+        ]
+    },
+    "definition": {
+        "any-key": "any-data"
+    }
+}
+###

@@ -1,0 +1,37 @@
+{{ range $_, $deployment := .Values.app.deployments }}
+  {{ range $_, $process := $deployment.processes }}
+  {{- if $process.servicePorts }}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    {{ $.Values.app.group }}/app-name: {{ $.Values.app.name | quote }}
+    {{ $.Values.app.group }}/app-process: {{ $process.name | quote }}
+    {{ $.Values.app.group }}/app-deployment-version: {{ $deployment.version | quote }}
+    {{ $.Values.app.group }}/is-isolated-run: "false"
+    {{- range $i, $label := $deployment.labels }}
+    {{ $label.name }}: {{ $label.value | quote }}
+    {{- end }}
+    {{- range $k, $v := $process.serviceMetadata.labels }}
+    {{ $k }}: {{ $v | quote }}
+    {{- end}}
+  {{- if $process.serviceMetadata.annotations }}
+  annotations:
+    {{- range $k, $v := $process.serviceMetadata.annotations }}
+    {{ $k }}: {{ $v | quote }}
+    {{- end }}
+  {{- end }}
+  name: {{ $.Values.app.name }}-{{ $process.name }}-{{ $deployment.version }}
+spec:
+  type: ClusterIP
+  ports:
+{{ $process.servicePorts | toYaml | indent 4 }}
+  selector:
+    {{ $.Values.app.group }}/app-name: {{ $.Values.app.name | quote }}
+    {{ $.Values.app.group }}/app-process: {{ $process.name | quote }}
+    {{ $.Values.app.group }}/app-deployment-version: {{ $deployment.version | quote }}
+    {{ $.Values.app.group }}/is-isolated-run: "false"
+---
+  {{- end }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,27 @@
+#{
+#  "metrics": {
+#    "clone": {
+#      "name": "clone",
+#      "total": 0,
+#      "perDay": 0,
+#      "perWeek": 0,
+#      "perMonth": 0,
+#      "perYear": 0
+#    },
+#    "load": {
+#      "name": "load",
+#      "total": 3,
+#      "perDay": 0,
+#      "perWeek": 0,
+#      "perMonth": 1,
+#      "perYear": 3
+#    }
+#  }
+#}
+### metrics for default types
+GET http://localhost:8080/config/62915b958c30b36bd56ed19d/metrics
+X-Auth-Token: b959b90ba5ef405adc45e28d869c166340
+
+### metrics for the exact types
+GET http://localhost:8080/config/62915b958c30b36bd56ed19d/metrics?type=clone,load
+X-Auth-Token: b959b90ba5ef405adc45e28d869c166340

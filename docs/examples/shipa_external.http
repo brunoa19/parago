@@ -1,0 +1,143 @@
+#{
+#  "token": "524ca12d8230d20b10f8213e1a98ea5010a43ba4"
+#}
+
+POST https://target.shipa.cloud:443/users/nbvteam@gmail.com/tokens
+Content-Type: application/json
+
+{
+   "password": "_NrgS_I[fW3(9"
+}
+
+###
+
+#[
+#  {
+#    "id": "62968b25a7d33b0001f55f55",
+#    "email": "nbvteam@gmail.com",
+#    "name": "BOGDAN NIKOVSKYI",
+#    "deactivated": false,
+#    "phone": "",
+#    "Roles": [
+#      {
+#        "Name": "AllowAllOrg",
+#        "ContextType": "organization",
+#        "ContextValue": "03b31e3d3de0441cb6869b0fd1da89f5",
+#        "Org": ""
+#      },
+#      {
+#        "Name": "TeamAdmin",
+#        "ContextType": "team",
+#        "ContextValue": "shipa-team",
+#        "Org": ""
+#      }
+#    ],
+#    "Permissions": [
+#      {
+#        "Name": "",
+#        "ContextType": "organization",
+#        "ContextValue": "03b31e3d3de0441cb6869b0fd1da89f5",
+#        "Org": ""
+#      },
+#      {
+#        "Name": "app",
+#        "ContextType": "team",
+#        "ContextValue": "shipa-team",
+#        "Org": ""
+#      },
+#      {
+#        "Name": "cluster",
+#        "ContextType": "team",
+#        "ContextValue": "shipa-team",
+#        "Org": ""
+#      },
+#      {
+#        "Name": "team",
+#        "ContextType": "team",
+#        "ContextValue": "shipa-team",
+#        "Org": ""
+#      }
+#    ],
+#    "quota": {
+#      "limit": 8,
+#      "inuse": 0
+#    },
+#    "orgId": "03b31e3d3de0441cb6869b0fd1da89f5",
+#    "orgName": "Nbv",
+#    "orgActivationDate": "2022-05-31T21:40:00.522Z",
+#    "orgAppLimit": 5
+#  }
+#]
+
+GET https://target.shipa.cloud:443/users?UserEmail=nbvteam@gmail.com
+Content-Type: application/json
+Authorization: 524ca12d8230d20b10f8213e1a98ea5010a43ba4
+
+###
+
+#{
+#  "id": "62968b25a7d33b0001f55f55",
+#  "email": "nbvteam@gmail.com",
+#  "name": "BOGDAN NIKOVSKYI",
+#  "deactivated": false,
+#  "phone": "",
+#  "Roles": [
+#    {
+#      "Name": "AllowAllOrg",
+#      "ContextType": "organization",
+#      "ContextValue": "03b31e3d3de0441cb6869b0fd1da89f5",
+#      "Org": ""
+#    },
+#    {
+#      "Name": "TeamAdmin",
+#      "ContextType": "team",
+#      "ContextValue": "shipa-team",
+#      "Org": ""
+#    }
+#  ],
+#  "Permissions": [
+#    {
+#      "Name": "",
+#      "ContextType": "organization",
+#      "ContextValue": "03b31e3d3de0441cb6869b0fd1da89f5",
+#      "Org": ""
+#    },
+#    {
+#      "Name": "app",
+#      "ContextType": "team",
+#      "ContextValue": "shipa-team",
+#      "Org": ""
+#    },
+#    {
+#      "Name": "cluster",
+#      "ContextType": "team",
+#      "ContextValue": "shipa-team",
+#      "Org": ""
+#    },
+#    {
+#      "Name": "team",
+#      "ContextType": "team",
+#      "ContextValue": "shipa-team",
+#      "Org": ""
+#    }
+#  ],
+#  "quota": {
+#    "limit": 8,
+#    "inuse": 0
+#  },
+#  "orgId": "03b31e3d3de0441cb6869b0fd1da89f5",
+#  "orgName": "Nbv",
+#  "orgActivationDate": "2022-05-31T21:40:00.522Z",
+#  "orgAppLimit": 5
+#}
+
+GET https://target.shipa.cloud:443/users/info
+Content-Type: application/json
+Authorization: 205af3dba9f7149d195e2c2e3166046dca17f01a
+
+###
+
+GET https://target.shipa.cloud:443/users
+Authorization: 205af3dba9f7149d195e2c2e3166046dca17f01a
+
+###

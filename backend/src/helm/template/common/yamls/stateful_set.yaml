@@ -1,0 +1,68 @@
+{{ if eq $.Values.app.type "StatefulSet" }}
+{{ range $_, $deployment := .Values.app.deployments }}
+  {{ range $_, $process := $deployment.processes }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    {{ $.Values.app.group }}/app-name: {{ $.Values.app.name | quote }}
+    {{ $.Values.app.group }}/app-process: {{ $process.name | quote }}
+    {{ $.Values.app.group }}/app-process-replicas: {{ $process.units | quote }}
+    {{ $.Values.app.group }}/app-deployment-version: {{ $deployment.version | quote }}
+    {{ $.Values.app.group }}/is-isolated-run: "false"
+    {{- range $k, $v := $process.deploymentMetadata.labels }}
+    {{ $k }}: {{ $v | quote }}
+    {{- end}}
+  {{- if $process.deploymentMetadata.annotations }}
+  annotations:
+    {{- range $k, $v := $process.deploymentMetadata.annotations }}
+    {{ $k }}: {{ $v | quote }}
+    {{- end }}
+  {{- end }}
+  name: {{ $.Values.app.name }}-{{ $process.name }}-{{ $deployment.version }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ default $.Values.app.name $.Values.app.id | quote }}
+      version: {{ $deployment.version | quote }}
+      {{ $.Values.app.group }}/app-name: {{ $.Values.app.name | quote }}
+      {{ $.Values.app.group }}/app-process: {{ $process.name | quote }}
+      {{ $.Values.app.group }}/app-deployment-version: {{ $deployment.version | quote }}
+      {{ $.Values.app.group }}/is-isolated-run: "false"
+  serviceName: {{ $.Values.app.name | quote }}
+  template:
+    metadata:
+      labels:
+        app: {{ default $.Values.app.name $.Values.app.id | quote }}
+        version: {{ $deployment.version | quote }}
+        {{ $.Values.app.group }}/app-name: {{ $.Values.app.name | quote }}
+        {{ $.Values.app.group }}/app-process: {{ $process.name | quote }}
+        {{ $.Values.app.group }}/app-deployment-version: {{ $deployment.version | quote }}
+        {{ $.Values.app.group }}/is-isolated-run: "false"
+        {{- range $k, $v := $process.podMetadata.labels }}
+        {{ $k }}: {{ $v | quote }}
+        {{- end }}
+      {{- if $process.podMetadata.annotations }}
+      annotations:
+        {{- range $k, $v := $process.podMetadata.annotations }}
+        {{ $k }}: {{ $v | quote }}
+        {{- end }}
+      {{- end }}
+    {{- template "app.podTemplate" (dict "root" $.Values "deployment" $deployment "process" $process) }}
+  {{- if $.Values.app.volumeClaimTemplates }}
+  volumeClaimTemplates:
+    {{- range $_, $template := $.Values.app.volumeClaimTemplates }}
+  - metadata:
+      name: {{ $template.name }}
+    spec:
+      accessModes: {{ $template.accessModes }}
+      storageClassName: {{ $template.storageClassName | quote }}
+      resources:
+        requests:
+          storage: {{ $template.storage }}
+      {{- end }}
+  {{- end }}
+---
+{{ end }}
+{{ end }}
+{{- end }}
