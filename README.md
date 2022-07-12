@@ -10,7 +10,7 @@ While application definitions can be kept private, users can also save and share
 
 ## Architecture
 
-![Architecture](docs/images/app-definition.png?raw=true "Architecture")
+![Architecture](docs/images/parago-arch.png?raw=true "Architecture")
 
 - Definitions are saved using MongoDB
 - Parago uses Shipa for authentication - You can create a [free account here](https://apps.shipa.cloud)
